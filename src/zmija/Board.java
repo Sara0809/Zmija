@@ -24,16 +24,16 @@ class Board extends JPanel {
     
     public final int PANEL_WIDTH = 800;
     
-    public final int PANEL_HEIGHT = 800;
+    public final int PANEL_HEIGHT = 600;
 
-    final Color BACKGROUND_COLOR = Color.BLACK;
+    final Color BACKGROUND_COLOR = Color.BLUE;
     Boolean inGame;
     public Board() {
         setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
         setBackground(BACKGROUND_COLOR);
         setFocusable(true);
 
-        setFont(getFont().deriveFont(Font.BOLD, 18f));
+        setFont(getFont().deriveFont(Font.BOLD, 20f));
         setDoubleBuffered(true);
         inGame = false;
     }
@@ -57,7 +57,7 @@ class Board extends JPanel {
         if (inGame) {
             // Iscrtaj teren
             g2.drawRect(0, 0, PANEL_WIDTH, PANEL_HEIGHT);
-            g2.setColor(Color.BLACK);
+            g2.setColor(Color.BLUE);
 
             
             // Iscrtaj sve objekte
@@ -67,7 +67,7 @@ class Board extends JPanel {
             g2.setFont(f);
             g2.setColor(Color.WHITE);
            
-            //Optimizacija upotrebe RAM-a, 
+            
             g.dispose();
          } else {
            
