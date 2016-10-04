@@ -10,8 +10,8 @@ public class TijeloZmije{
 
     private Board board;
 
-    int xStrana;
-    int yStrana;
+    int xGlava;
+    int yGlava;
     int x;
     int y;
     int s = 20;
@@ -28,12 +28,12 @@ public class TijeloZmije{
     }
 
     public TijeloZmije(Board board) {
-        this.tijlo = 2;
+        this.tijlo = 5;
         this.board = board;
         x = 160;
         y = 160;
-        xStrana = x;
-        yStrana = y;
+        xGlava = x;
+        yGlava = y;
         for (int i = 0; i < tijlo; i++) {
             Rectangle r = new Rectangle(x, y, s, s);
             zmija.add(r);
@@ -79,74 +79,70 @@ public class TijeloZmije{
             realMovingState = usersLastMovingState;
         }
 
-        Rectangle head = new Rectangle(zmija.getFirst());
+        Rectangle glava = new Rectangle(zmija.getFirst());
 
         if (realMovingState == StranaKretanja.KRETANJE_DESNO) {
-            head.x = head.x + s;
-            xStrana = head.x;
-            yStrana = head.y;
-            zmija.add(0, head);
+            glava.x = glava.x + s;
+            xGlava = glava.x;
+            yGlava = glava.y;
+            zmija.add(0, glava);
             if (this.zmija.size() > tijlo) {
                 zmija.removeLast();
             }
 
-            if (head.x >= 600) {
-                head.x = 0;
+            if (glava.x >= 600) {
+                glava.x = 0;
             }
         } else if (realMovingState == StranaKretanja.KRETANJE_LIJEVO) {
-            head.x = head.x - s;
-            xStrana = head.x;
-            yStrana = head.y;
-            zmija.add(0, head);
+            glava.x = glava.x - s;
+            xGlava = glava.x;
+            yGlava = glava.y;
+            zmija.add(0, glava);
 
             if (this.zmija.size() > tijlo) {
                 zmija.removeLast();
             }
 
-            if (head.x < 0) {
-                head.x = 600 - s;
+            if (glava.x < 0) {
+                glava.x = 600 - s;
             }
         } else if (realMovingState == StranaKretanja.KRETANJE_GORE) {
-            head.y = head.y - s;
-            xStrana = head.x;
-            yStrana = head.y;
-            zmija.add(0, head);
+            glava.y = glava.y - s;
+            xGlava = glava.x;
+            yGlava = glava.y;
+            zmija.add(0, glava);
 
             if (this.zmija.size() > tijlo) {
                 zmija.removeLast();
             }
 
-            if (head.y < 0) {
-                head.y = 600 - s;
+            if (glava.y < 0) {
+                glava.y = 600 - s;
             }
 
         } else if (realMovingState == StranaKretanja.KRETSNJE_DOLE) {
-            head.y = head.y + s;
-            xStrana = head.x;
-            yStrana = head.y;
-            zmija.add(0, head);
+            glava.y = glava.y + s;
+            xGlava = glava.x;
+            yGlava = glava.y;
+            zmija.add(0, glava);
             if (this.zmija.size() >= tijlo) {
                 zmija.removeLast();
             }
 
-            if (head.y >= 600) {
-                head.y = 0;
+            if (glava.y >= 600) {
+                glava.y = 0;
             }
 
         }
 
     }
 
-    /**
-     * Metoda koja vraća pravugaonik koji predstavlja glavu zmije.
-     */
+    
+     
     public Rectangle2D getBoundsHead() {
-        return new Rectangle2D.Double(xStrana, yStrana, s, s);
+        return new Rectangle2D.Double(xGlava, yGlava, s, s);
     }
-
-    /**
-     * Metoda koja ispituje da li je zmija udarila u svoj rep.
-     */
+    
     void udarilaUsvojRep() {
         for (int i = 1; i < zmija.size(); i++) {
             if (zmija.getFirst().intersects(zmija.get(i))) {

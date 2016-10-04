@@ -25,7 +25,7 @@ public class hrana {
         this.y = y * s;
     }
      public void draw(Graphics2D g2) {
-        g2.drawRect(x, y, s, s);
+        g2.fillRect(x, y, s, s);
     }
      public Rectangle2D getBounds() {
         return new Rectangle2D.Double(x, y, s, s);

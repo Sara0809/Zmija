@@ -34,12 +34,12 @@ public class Frame extends JFrame{
 
     }
     private JMenuBar initMenu() {
-          // Napravimo liniju menija
+          
         JMenuBar menuBar = new JMenuBar();
-        // Mapravimo meni
+        
         JMenu gameMenu = new JMenu("Igra");
 
-        // Napravimo stavku za meni
+       
         JMenuItem novaIgra = new JMenuItem("Nova igra");
         JMenuItem pomoc = new JMenuItem("Pomoc");
         JMenuItem rezultat = new JMenuItem("Rezultat");
@@ -57,15 +57,22 @@ public class Frame extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
             
-//                board.pomoc.setVisible(true);
+                board.pomoc.setVisible(true);
             }
         });
 
-        // Dodamo stavku u meni
-        gameMenu.add(novaIgra);
-       
+              rezultat.addActionListener(new ActionListener() {
 
-        // Dodamo meni u liniju menija
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                board.readTextFileLineByLine();
+            }
+        });
+
+        
+        gameMenu.add(novaIgra);
+        gameMenu.add(rezultat);
+        
         menuBar.add(gameMenu);
         menuBar.add(pomoc);
 
