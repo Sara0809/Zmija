@@ -36,7 +36,7 @@ import javax.swing.JPanel;
  */
 class Board extends JPanel implements Runnable{
     
-    public final int PANEL_SIRINA = 800;
+    public final int PANEL_SIRINA = 600;
     
     public final int PANEL_VISINA = 600;
 
